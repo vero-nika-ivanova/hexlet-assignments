@@ -1,8 +1,11 @@
 package exercise;
 
-
+import exercise.annotation.Inspect;
+import exercise.model.Address;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.Method;
 
 // BEGIN
 @SpringBootApplication
@@ -10,14 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
     public static void main(String[] args) {
         var address = new Address("London", 12345678);
-
         // BEGIN
-        var service = new Address();
         for (
                 Method method : Address.class.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Inspect.class)) {
                 try {
-                    method.invoke(service);
+                    method.invoke(address);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -27,6 +28,7 @@ public class Application {
                         + method.getReturnType().getTypeName().replace("java.lang.",""));
             }
         }
+
         // END
     }
 }
