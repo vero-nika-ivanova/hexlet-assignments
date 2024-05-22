@@ -1,9 +1,13 @@
 package exercise;
 
-import exercise.model.Address;
-import exercise.annotation.Inspect;
-import java.lang.reflect.Method;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+// BEGIN
+@SpringBootApplication
+@RestController
 public class Application {
     public static void main(String[] args) {
         var address = new Address("London", 12345678);
