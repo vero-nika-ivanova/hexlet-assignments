@@ -21,7 +21,7 @@ public class Application {
                 System.out.println("Method: "
                         + method.getName()
                         + " returns a value of type "
-                        + method.getReturnType().getTypeName());//.replace("java.lang.",""));
+                        + method.getReturnType().getTypeName().replace("java.lang.",""));
             }
         }
         // END
